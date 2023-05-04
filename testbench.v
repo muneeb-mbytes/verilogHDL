@@ -20,6 +20,7 @@ initial
 		#5 select_lines=4'h1;
 		#5 select_lines=4'h6;
 		#5 select_lines=4'hc;
-		#10 $finish;
+		#10 
+		$finish;
 	end 
 endmodule
