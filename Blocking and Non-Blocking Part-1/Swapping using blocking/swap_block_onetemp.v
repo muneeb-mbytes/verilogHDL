@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-module swap_block(
+module swap_block_onetemp(
     output reg [3:0] a,
     output reg [3:0] b,
     input clk
