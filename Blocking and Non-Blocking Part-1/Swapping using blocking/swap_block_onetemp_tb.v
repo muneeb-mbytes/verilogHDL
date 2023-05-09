@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-module swap_block_tb;
+module swap_block_onetemp_tb;
 
 	// Inputs
 	reg clk;
@@ -9,7 +9,7 @@ module swap_block_tb;
 	wire [3:0] b;
 
 	// Instantiate the Unit Under Test (UUT)
-	swap_block uut (
+	swap_block_onetemp uut (
 		.a(a), 
 		.b(b), 
 		.clk(clk)
