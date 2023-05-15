@@ -35,14 +35,17 @@ module alu_op(F,a,b,c,d,clk1,clk2);
 			L12_X2 <=  c - d;
 			L12_D <= d;
 		end
-		always@(posedge clk1)
-			begin
-			//stage 2
+	
+	//stage 2
+	always@(posedge clk1)
+		begin
 			 L23_X3 <=  L12_X1 + L12_X2;
 			 L23_D  <= L12_D;
-			 end
-		always@(posedge clk1) begin
-			 //stage3 
+		end
+	
+	 //stage3 
+	always@(posedge clk1) 
+		begin
 			 L34_F <=  L23_X3 * L23_D ;
 		end
 
