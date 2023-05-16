@@ -7,17 +7,17 @@ module cyclic_lamp (clock, light);
 always @(posedge clock)
 case (state)
   S0: begin // S0 means RED
-      light <= GREEN; state <= S1;
+        light <= GREEN; state <= S1;
       end
   S1: begin // S1 means GREEN
-      light <= YELLOW; state <= S2;
+        light <= YELLOW; state <= S2;
       end
   S2: begin // S2 means YELLOW
-      light <= RED; state <= S0;
+        light <= RED; state <= S0;
       end
   default: begin
-           light <= RED;
-           state <= S0;
+            light <= RED;
+            state <= S0;
            end
 endcase
 endmodule
