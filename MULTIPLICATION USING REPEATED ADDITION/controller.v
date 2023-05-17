@@ -13,7 +13,7 @@ state <= S2;
 S2:
 state <= S3;
 S3:
-#2 if (eqz) state <= S4;
+  if (eqz) state <= S4;
 S4:
 state <= S4;
 default: state <= S0;
@@ -23,16 +23,16 @@ always @(state)
 begin
 case (state)
 S0:
-begin #1 LdA = 0; LdB = 0; LdP = 0; clrP = 0; decB = 0; end
+begin  LdA = 0; LdB = 0; LdP = 0; clrP = 0; decB = 0; end
 S1:
-begin #1 LdA = 1; end
+begin  LdA = 1; end
 S2:
-begin #1 LdA = 0; LdB = 1; clrP = 1; end
+begin  LdA = 0; LdB = 1; clrP = 1; end
 S3:
-begin #1 LdB = 0; LdP = 1; clrP = 0; decB = 1; end
+begin  LdB = 0; LdP = 1; clrP = 0; decB = 1; end
 S4:
-begin #1 done = 1; LdB = 0; LdP = 0; decB = 0; end
-default: begin #1 LdA = 0; LdB = 0; LdP = 0; clrP = 0; decB = 0; end
+begin  done = 1; LdB = 0; LdP = 0; decB = 0; end
+default: begin  LdA = 0; LdB = 0; LdP = 0; clrP = 0; decB = 0; end
 endcase
 end
 endmodule 
