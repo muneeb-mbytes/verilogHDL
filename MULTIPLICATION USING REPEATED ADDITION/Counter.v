@@ -1,11 +1,10 @@
-module PIPO2 (Y,Z, LdP,
-clrP, clk);
-input [15:0] Z;
-input LdP, clrP, clk;
-output reg [15:0] Y;
-always @(posedge clk)
-if (clrP) 
-  Y <= 16'b0;
-else if (LdP) 
-  Y <= Z;//Y, Z, LdP, clrP, clk
-endmodule
+module CNTR (Bout, data_in, LdB, decB, clk);
+input [15:0] data_in;
+input LdB, decB, clk;
+output reg [15:0] Bout;
+always @(posedge clk )
+if (LdB) 
+Bout <= data_in;
+else if (decB)
+ Bout <= Bout - 1;
+endmodule 
