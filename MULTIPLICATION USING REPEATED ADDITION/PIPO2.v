@@ -1,4 +1,5 @@
-module PIPO2 (Y,Z, LdP,clrP, clk);
+module PIPO2 (Y,Z, LdP,
+clrP, clk);
 input [15:0] Z;
 input LdP, clrP, clk;
 output reg [15:0] Y;
