@@ -1,3 +1,4 @@
+
 module CNTR (Bout, data_in, LdB, decB, clk);
 input [15:0] data_in;
 input LdB, decB, clk;
