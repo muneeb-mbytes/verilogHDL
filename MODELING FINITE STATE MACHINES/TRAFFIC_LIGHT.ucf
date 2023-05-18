@@ -1,0 +1,5 @@
+NET "fast_clk"LOC = "p84";
+
+NET "Light<0>" LOC=p33;
+NET "Light<1>" LOC=p32;
+NET "Light<2>" LOC=p30;
