@@ -3,8 +3,7 @@ module fsm_seq_detector(
     input rst,
     input [9:0]data,
     input x,
-    output reg z,
-    output b );
+    output reg z );
 parameter A=0,B=1,C=2,D=3;
 reg [1:0] PS,NS;
 assign data=10'b0001111010;
