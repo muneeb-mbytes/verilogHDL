@@ -16,6 +16,14 @@ module shift_register_blocking(
 	 
 	 
 	always @(posedge clk)
+		begin
+		 if(clear)
+		 begin
+		   q2 = 0;
+			q1 = 0;
+			i = 0;
+		 end
+	         else
 		 begin
 		  q2 = q1;
 		  q1 = a[i];
