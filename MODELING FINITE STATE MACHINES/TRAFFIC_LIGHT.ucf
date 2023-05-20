@@ -3,3 +3,16 @@ NET "fast_clk"LOC = "p84";
 NET "Light<0>" LOC=p33;
 NET "Light<1>" LOC=p32;
 NET "Light<2>" LOC=p30;
+
+NET "digit[0]" LOC = P127;
+NET "digit[1]" LOC = P131;
+NET "digit[2]" LOC = P132;
+NET "digit[3]" LOC = P133;
+NET "seg[0]" LOC = P134;
+NET "seg[1]" LOC = P137;
+NET "seg[2]" LOC = P138;
+NET "seg[3]" LOC = P139;
+NET "seg[4]" LOC = P140;
+NET "seg[5]" LOC = P141;
+NET "seg[6]" LOC = P142;
+NET "seg[7]" LOC = P143;
