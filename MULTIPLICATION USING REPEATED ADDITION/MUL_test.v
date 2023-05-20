@@ -15,7 +15,7 @@ always #5 clk = ~clk;
 initial
 begin
 #17;
- data_in = 6;
+ data_in = 10;
  #10;
  data_in = 5;
 end
