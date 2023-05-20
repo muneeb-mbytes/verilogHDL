@@ -32,7 +32,7 @@ S3:
 begin  LdB = 0; LdP = 1; clrP = 0; decB = 1; end
 S4:
 begin  done = 1; LdB = 0; LdP = 0; decB = 0; end
-default: begin #1 LdA = 0; LdB = 0; LdP = 0; clrP = 0; decB = 0; end
+default: begin  LdA = 0; LdB = 0; LdP = 0; clrP = 0; decB = 0; end
 endcase
 end
 endmodule 
