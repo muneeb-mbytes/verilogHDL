@@ -1,10 +1,10 @@
-module test;
+module Seq_detector_test;
 
 	// Inputs
 	reg clk;
 	reg rst;
-	reg [4:0] data;
-	reg x;
+	reg [9:0] x;
+	
 
 	// Outputs
 	wire z;
@@ -14,43 +14,38 @@ module test;
 	fsm_seq_detector uut (
 		.clk(clk), 
 		.rst(rst), 
-		.data(data), 
+		//.data(data), 
 		.x(x), 
 		.z(z)
 	);
-
+   always begin
+    #5 clk = ~clk; // Toggle clock every 5 time units
+  end
+  
 	initial begin
 		// Initialize Inputs
 		clk = 0;
 		rst = 1;
-		data = 0;
+		//data = 0;
 		x = 0;
 
+		#10 rst=0;
 		// Wait 100 ns for global reset to finish
-		#10;
-		rst=0;
-       // Test case 2
-    #10 data = 5'b11100;
-      x = 0;
-    
-    #10 x = 1;
-    
-    #10 x = 0;
-    
-    #10 x = 1;
-    
-    #10 x = 1;
-    
-    #10 x = 1;
-	 
-	 #10  x=1;
-	 
-	 #10 x=1;
-	 
-	 #10 x=1;
+	 @(posedge clk) #10 x = 1'b1;
+	 @(posedge clk)	#10 x=1'b0;
+	 @(posedge clk)	#10 x=1'b1;
+	 @(posedge clk)	#10 x=1'b1;
+	 @(posedge clk)	#10 x=1'b1;
+	 @(posedge clk)	#10 x=1'b0;
+	 @(posedge clk)	#10 x=1'b0;
+	 @(posedge clk)	#10 x=1'b1;
+	 @(posedge clk)	#10 x=1'b1;
+	 @(posedge clk)	#10 x=1'b1;
 		// Add stimulus here
-
+ #500 $finish;
 	end
-     always #5 clk=~clk; 
+    
+always @(posedge clk) begin
+    $display("Output z = %b", z);
+  end	 
 endmodule
-
