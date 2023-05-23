@@ -2,7 +2,6 @@ module fsm_seq_detector(
     input clk,
     input rst,
     input [9:0] x,
-	 output reg buzz,
     output reg z
     );
 parameter A=0,B=1,C=2,D=3;
