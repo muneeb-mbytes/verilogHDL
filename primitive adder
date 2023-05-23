@@ -1,0 +1,36 @@
+primitive cyy(cy,a,b,c);
+input a,b,c;
+output cy;
+table
+//a  b  c : cy;
+  0  0  0 : 0;
+  0  0  1 : 0;
+  0  1  0 : 0;
+  0  1  1 : 1;
+  1  0  0 : 1;
+  1  0  1 : 1;
+  1  1  0 : 1;
+  1  1  1 : 1;
+endtable
+endprimitive
+primitive sm(sum,a,b,c);
+input a,b,c;
+output sum;
+table
+//a  b  c : sum;
+  0  0  0 : 0;
+  0  0  1 : 1;
+  0  1  0 : 1;
+  0  1  1 : 0;
+  1  0  0 : 1;
+  1  0  1 : 0;
+  1  1  0 : 0;
+  1  1  1 : 1;
+endtable
+endprimitive
+module adder(cy,sum,a,b,c);
+input a,b,c;
+output cy,sum;
+cyy ad(cy,a,b,c);
+sm addd(sum,a,b,c);
+endmodule
