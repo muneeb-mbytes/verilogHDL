@@ -1,0 +1,106 @@
+module shift_register(input clk,input reset,
+           output wire[3:0]q,input in,output [7:0]seg, output [3:0] digit);
+//wire w_1Hz;
+d_ff d1(in,reset,clk,q[0]);
+d_ff d2(q[0],reset,clk,q[1]);
+d_ff d3(q[1],reset,clk,q[2]);
+d_ff d4(q[2],reset,clk,q[3]);
+
+oneHz_gen hz1(.clk_50MHz(clk_50MHz), .reset_button(reset_button), .clk_1Hz(w_1Hz));
+seg7_control seg7(.clk(clk),.q(q), .seg(seg), .digit(digit));
+endmodule
+module d_ff(d,reset,clk,q);
+input d;
+input reset;
+input clk;
+output reg q;
+reg [31:0]clkdiv=32'd0;
+always@(posedge clk) 
+clkdiv=clkdiv+1; 
+
+always@(posedge clkdiv[24] or posedge reset)
+begin
+if(reset)
+q=1'b0;
+else
+q=d;
+end
+endmodule
+
+module seg7_control(
+input [3:0]q,
+input clk ,
+output reg [7:0] seg,       // segment pattern 0-9
+output reg [3:0] digit      // digit select signals
+ );// Parameters for segment patterns
+ parameter zero  = 8'b00000011;  // 0
+ parameter one  = 8'b11110011;  // 1
+parameter letter=8'b11111111;	 // 2 
+// To select each digit in turn
+reg [1:0] digit_select;
+reg [16:0] digit_timer; 
+reg [31:0]clkdiv=32'd0; 
+always@(posedge clk)
+clkdiv=clkdiv+1;
+
+always @(posedge clk ) begin
+    
+		    if(digit_timer == 49_999) begin         // The period of 50MHz clock is 20ns (1/(50*1,000,000) seconds)
+                digit_timer <= 0;                   // 20ns x 50,000 = 1ms
+                digit_select <=  digit_select + 1;
+            end
+            else
+                digit_timer <=  digit_timer + 1;
+    end
+    	 // 2 bit counter for selecting each of 4 digits
+     // counter for digit refresh
+    // Logic for driving the 4 bit anode output based on digit select
+    always @(digit_select) begin
+	   case(digit_select) 
+            2'b00 : digit = 4'b0001;   // Turn on ones digit
+            2'b01 : digit = 4'b0010;   // Turn on tens digit
+            2'b10 : digit = 4'b0100;   // Turn on hundreds digit
+            2'b11 : digit = 4'b1000;   // Turn on thousands digit
+        endcase
+    end
+	   // Logic for driving segments based on which digit is selected and the value of each digit
+always@*
+        case(digit_select)
+            2'b00 : begin       // ONES DIGIT
+                       case(q[0])
+							  1'b0:seg = zero;
+							  1'b1:seg=one;
+								endcase
+                    end
+                    
+            2'b01 : begin       // TENS DIGIT
+                       
+			             case(q[1])
+							  1'b0:seg = zero;
+							  1'b1:seg=one;
+								endcase
+                    
+                           
+                    end
+                    
+            2'b10 : begin       // HUNDREDS DIGIT
+ 			            case(q[2])
+							  1'b0:seg = zero;
+							  1'b1:seg=one;
+								endcase
+                          
+									  
+                    end
+                    
+            2'b11 : begin       // MINUTES ONES DIGIT
+ 			          case(q[3])
+							  1'b0:seg = zero;
+							  1'b1:seg=one;
+								endcase
+								
+                            
+									  
+                    end
+        endcase
+		  
+endmodule
