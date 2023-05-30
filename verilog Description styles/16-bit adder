@@ -6,7 +6,7 @@ module alu_16bit(x,y,z,sign,zero,carry,parity,overflow
 	 wire c[3:1];
 	 
 
-assign sign=z[15];
+assign sign=z[15]; 
 assign zero=~|z;
 assign parity =~^z;
 assign overflow=(x[15] &y[15] &~z[15])| (~x[15] &y[15] &z[15]);
