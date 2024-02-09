@@ -20,6 +20,8 @@ https://github.com/muneeb-mbytes/verilogHDL/wiki
 
 Source Credits:
 
+Hardware Modeling using Verilog
+
 Prof.INDRANIL SENGUPTA
 
 IIT Kharagpur
