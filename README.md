@@ -9,6 +9,8 @@ This repository serves as a comprehensive resource for understanding and working
 
 Verilog HDL is a hardware description language used to model and simulate digital circuits. It allows designers to describe the behavior and structure of electronic systems, making it an essential tool in the field of digital design.
 
+Majority of designer’s choices, one must make in the field of electronics, it typically centers on the functional advantages. One language for all aspects of design, testing, and verification.Verilog has a superior grasp on hardware modeling as well as a lower level of programming constructs. 
+
 Understanding Verilog HDL opens up exciting opportunities in digital design, FPGA programming, and hardware development. Whether you're interested in building simple logic circuits or complex embedded systems, Verilog HDL provides a powerful framework for realizing your ideas.
 
 ## Get Started
